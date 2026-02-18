@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ─────────────────────────── */
+:root {
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Urbanist", system-ui, sans-serif;
+  --font-mono: "Anonymous Pro", ui-monospace, monospace;
+
+  --accent: #4f46e5;
+  --accent-light: #818cf8;
+  --accent-ultra-light: #eef2ff;
+  --surface: #ffffff;
+  --surface-secondary: #f8fafc;
+  --surface-tertiary: #f1f5f9;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+
+  --sidebar-width: 260px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+}
+
+/* ── Base ─────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--surface-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Scrollbar ───────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ── Animations ──────────────────────────── */
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Loading skeleton ────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-tertiary) 25%, var(--surface) 50%, var(--surface-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-xs);
+}
+
+/* ── Markdown prose ──────────────────────── */
+.prose h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+.prose h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+.prose h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+.prose p {
+  margin-bottom: 0.75rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+.prose ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0.75rem;
+}
+.prose li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+.prose li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: var(--accent);
+  opacity: 0.5;
+}
+.prose strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.prose code {
+  font-family: var(--font-mono);
+  background: var(--accent-ultra-light);
+  color: var(--accent);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.prose pre {
+  background: var(--surface-tertiary);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+}
+.prose pre code {
+  background: none;
+  color: var(--text-primary);
+  padding: 0;
+  font-weight: 400;
+}
